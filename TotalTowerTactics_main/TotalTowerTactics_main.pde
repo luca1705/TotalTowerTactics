@@ -1,14 +1,13 @@
 int w, h;
 ArrayList<PVector> level;
 
-
 GameManager gm = new GameManager();
 Shop store = new Shop(); 
 
-
 void setup() {
-  stroke(0, 0, 0, 50);
+  stroke(0,0,0, 50);
   size(1000, 800);
+
   w = width-200;
   h = height;
 
