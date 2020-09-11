@@ -1,4 +1,4 @@
-ArrayList<Creep> creeps; 
+ArrayList<Creep> creeps;
 
 class Creep {
   float speed, hp;

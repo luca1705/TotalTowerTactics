@@ -1,22 +1,20 @@
-class GameManager{
-  
+class GameManager {
+
   //Player
   int gold;
-  Tower activeTower;
-  
+  Tower activeTower = new MG();
+
   //Creeps
   int wave;
-  
-  GameManager(){
-    
+
+  GameManager() {
   }
-  
-  void display(){
+
+  void display() {
     fill(0);
     textSize(28);
-//    textAlign(RIGHT);
+    //    textAlign(RIGHT);
     text("Gold: " + gold, width - 190, 35);
     text("Wave: " + wave, width - 190, 70);
   }
-  
 }
