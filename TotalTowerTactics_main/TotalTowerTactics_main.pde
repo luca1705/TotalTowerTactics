@@ -14,14 +14,14 @@ void setup() {
   //populate Grid
   populateGrid();
 
-  for (int i =0; i<2; i++) {
+/*  for (int i =0; i<2; i++) {
     creeps.add(new Creep());
     println(creeps.get(i).pos);
 //    println(gridRoute[0]);
 //    println(creeps.size());
 //   println(creeps.getloc);
   }
-}
+*/}
 
 void draw() {
   background(160, 95, 20);
@@ -29,7 +29,6 @@ void draw() {
   for (Creep a : creeps) {
     a.display();
     a.direction();
-    a.move();
   }
   for (Grid a : TowerGrid) {
     a.display();
@@ -39,4 +38,5 @@ void draw() {
   //Misc
   store.display();
   gm.display();
+  gm.wave();
 }

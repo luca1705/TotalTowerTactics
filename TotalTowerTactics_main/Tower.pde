@@ -2,11 +2,9 @@ class Tower {
   float r, rate, dmg;
   PVector pos;
   Creep target;
-
-
-  Tower() {
-  }  
-
+  
+  Tower(){
+  }
 
   Tower(PVector position) {
     pos = position;
