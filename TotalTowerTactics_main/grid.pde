@@ -17,6 +17,7 @@ class Grid {
     b = (int)random(70, 80);
   }
 
+
   void buildTower() {
     if (gm.activeTower != null) {
       gridTower = gm.activeTower;
