@@ -11,11 +11,11 @@ class Grid {
 
     pos.x *= s;
     pos.y *= s;
-    
+
     //
     r = (int)random(86, 126);
     g = (int)random(125, 200);
-    b = (int)random(70,80);
+    b = (int)random(70, 80);
   }
 
   void buildTower(Tower t) {
