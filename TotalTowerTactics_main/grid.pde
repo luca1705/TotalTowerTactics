@@ -11,15 +11,18 @@ class Grid {
 
     pos.x *= s;
     pos.y *= s;
-    
-    //
+
     r = (int)random(86, 126);
     g = (int)random(125, 200);
-    b = (int)random(70,80);
+    b = (int)random(70, 80);
   }
 
-  void buildTower(Tower t) {
-    gridTower = t;
+  void buildTower() {
+    if (gm.activeTower != null) {
+      gridTower = gm.activeTower;
+      gridTower.pos = pos;
+      gm.activeTower = new MG();
+    }
   }
 
   void destroyTower() {
@@ -43,7 +46,7 @@ class Grid {
         fill(120, 120, 200);
         if (mousePressed && mouseButton == LEFT) {
           //Adapter til købsmenu
-          buildTower(new MG(pos));
+          buildTower();
         }
       } else if (mousePressed && mouseButton == RIGHT) {
         destroyTower();

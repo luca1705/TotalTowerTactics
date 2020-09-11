@@ -3,16 +3,15 @@ class Tower {
   PVector pos;
   Creep target;
 
-  Tower () {
-  }
+  Tower() {
+  }  
 
   Tower(PVector position) {
     pos = position;
   }
 
   void targetCreep() {
-    for (int i = 0; i < creeps.size(); i++){
-
+    for (int i = 0; i < creeps.size(); i++) {
     }
   }
 
@@ -22,16 +21,15 @@ class Tower {
   }
 }
 
-
 //Machinegun Turret
 class MG extends Tower {
-  MG(PVector position) {
-    pos = position;
 
+  MG() {
     r = 100;
     rate = 3;
     dmg = 1;
   }
+
 
   void display() {
     rectMode(CENTER);
