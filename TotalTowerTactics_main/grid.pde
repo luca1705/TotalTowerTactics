@@ -62,7 +62,7 @@ class Grid {
     }
     
     if (gridTower != null)
-      gridTower.check();
+      gridTower.shoot();
   }
 }
 
