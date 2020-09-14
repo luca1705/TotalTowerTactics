@@ -50,7 +50,39 @@ class Tower {
 class MG extends Tower {
   MG() {
     r = 200;
-    rate = 10;
+    rate = 4;
+    dmg = 1;
+  }
+
+  void display() {
+    rectMode(CENTER);
+    fill(100, 200, 150);
+    rect(pos.x + gSize/2, pos.y + gSize/2, 25, 25);
+    noFill();
+    ellipse(pos.x + gSize/2, pos.y + gSize/2, r, r);
+  }
+}
+
+class Hyper extends Tower {
+  Hyper() {
+    r = 150;
+    rate = 8;
+    dmg = 1;
+  }
+
+  void display() {
+    rectMode(CENTER);
+    fill(100, 200, 150);
+    rect(pos.x + gSize/2, pos.y + gSize/2, 25, 25);
+    noFill();
+    ellipse(pos.x + gSize/2, pos.y + gSize/2, r, r);
+  }
+}
+
+class Sniper extends Tower {
+  Sniper() {
+    r = 600;
+    rate = 0.5;
     dmg = 1;
   }
 
