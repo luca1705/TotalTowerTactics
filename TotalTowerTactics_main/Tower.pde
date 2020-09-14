@@ -28,7 +28,6 @@ class Tower {
 class MG extends Tower {
 
   MG() {
-
     r = 100;
     rate = 3;
     dmg = 1;

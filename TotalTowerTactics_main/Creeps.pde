@@ -1,7 +1,7 @@
 ArrayList<Creep> creeps = new ArrayList<Creep>(); 
 
 class Creep {
-  float speed, hp;
+  float speed, hp = 1;
   int step, maxStep;
   PVector pos;
 
@@ -32,6 +32,7 @@ class Creep {
       }
     } else {
       creeps.remove(this);
+      b.HP--;
     }
 
     pos.add(new PVector(dir.x * speed, dir.y*speed));
