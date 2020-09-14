@@ -22,7 +22,7 @@ class Grid {
     if (gm.activeTower != null) {
       gridTower = gm.activeTower;
       gridTower.pos = pos;
-      gm.activeTower = new MG();
+      gm.activeTower = null;
     }
   }
 
@@ -40,6 +40,8 @@ class Grid {
     }
   }
 
+
+
   //Draws blue square on top of grid if mouse is hovering above
   void activate() {
     if (mouseX > pos.x && mouseX <pos.x+s && mouseY > pos.y && mouseY < pos.y+s) {
@@ -50,13 +52,17 @@ class Grid {
           buildTower();
         }
       } else if (mousePressed && mouseButton == RIGHT) {
-        destroyTower();
-      } else {
-        fill (250, 25, 25, 120);
+          destroyTower();
+        } else {
+          fill (250, 25, 25, 120);
+        
       }
       rectMode(CORNER);
       rect(pos.x, pos.y, s, s);
     }
+    
+    if (gridTower != null)
+      gridTower.check();
   }
 }
 

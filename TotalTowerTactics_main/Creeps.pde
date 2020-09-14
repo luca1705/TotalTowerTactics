@@ -8,7 +8,7 @@ class Creep {
   Creep(PVector Offset) {
     step = 0;
     hp = 10;
-    speed = 2;
+    speed = 1;
     maxStep = gridRoute.length;
     pos = new PVector(gridRoute[0].x * 50 + Offset.x, gridRoute[0].y * 50 + Offset.y);
   }
