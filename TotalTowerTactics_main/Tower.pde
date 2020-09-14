@@ -63,7 +63,6 @@ class MG extends Tower {
   }
 }
 
-
 class Hyper extends Tower {
   Hyper() {
     r = 150;
