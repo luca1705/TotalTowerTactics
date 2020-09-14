@@ -1,14 +1,14 @@
 ArrayList<Creep> creeps = new ArrayList<Creep>(); 
 
 class Creep {
-  float speed, hp;
+  float speed, hp = 1;
   int step, maxStep;
   PVector pos;
 
   Creep(PVector Offset) {
     step = 0;
     hp = 10;
-    speed = 2;
+    speed = 1;
     maxStep = gridRoute.length;
     pos = new PVector(gridRoute[0].x * 50 + Offset.x, gridRoute[0].y * 50 + Offset.y);
   }
@@ -32,6 +32,7 @@ class Creep {
       }
     } else {
       creeps.remove(this);
+      b.HP--;
     }
 
     pos.add(new PVector(dir.x * speed, dir.y*speed));
