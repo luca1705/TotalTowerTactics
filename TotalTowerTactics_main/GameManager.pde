@@ -21,6 +21,8 @@ class GameManager {
         offset.normalize();
         offset.mult(spawnDist * (i+1));
         creeps.add(new Creep(offset));
+        creeps.add(new Sprinter(offset));
+        creeps.add(new Tank(offset));
       }
     }
   }
