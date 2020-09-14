@@ -2,17 +2,20 @@ int w, h;
 ArrayList<PVector> level;
 
 GameManager gm = new GameManager();
-Shop store = new Shop(); 
+Shop store; 
 
 void setup() {
   stroke(0,0,0, 50);
   size(1000, 800);
+
+ store = new Shop();
 
   w = width-200;
   h = height;
 
   //populate Grid
   populateGrid();
+  
 }
 
 void draw() {

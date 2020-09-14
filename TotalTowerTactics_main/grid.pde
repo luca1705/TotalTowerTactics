@@ -22,7 +22,7 @@ class Grid {
     if (gm.activeTower != null) {
       gridTower = gm.activeTower;
       gridTower.pos = pos;
-      gm.activeTower = new MG();
+      gm.activeTower = null;
     }
   }
 
