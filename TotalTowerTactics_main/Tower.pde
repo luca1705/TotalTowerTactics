@@ -48,7 +48,6 @@ class Tower {
 
 //Machinegun Turret
 class MG extends Tower {
-
   MG() {
     r = 200;
     rate = 10;
