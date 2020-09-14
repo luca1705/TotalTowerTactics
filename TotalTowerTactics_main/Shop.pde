@@ -1,4 +1,5 @@
 class Shop {
+
   shopitems[] si = new shopitems[7];
   Shop() {
     for (int i = 0; i <si.length; i++) {

@@ -2,6 +2,8 @@ int w, h;
 ArrayList<PVector> level;
 
 GameManager gm = new GameManager();
+
+Base b;
 Shop store; 
 
 void setup() {
@@ -13,9 +15,13 @@ void setup() {
   w = width-200;
   h = height;
 
+  
+
   //populate Grid
   populateGrid();
-  
+
+  b = new Base(gridRoute[gridRoute.length-1]);
+
 }
 
 void draw() {
@@ -30,7 +36,7 @@ void draw() {
   for (int i = 0; i < creeps.size(); i++){
     creeps.get(i).move();
   }
-  
+
   for (Grid a : TowerGrid) {
     a.display();
     a.activate();
@@ -40,4 +46,5 @@ void draw() {
   store.display();
   gm.display();
   gm.wave();
+  b.display();
 }
