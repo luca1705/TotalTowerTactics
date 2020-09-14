@@ -18,9 +18,6 @@ class Shop {
       si[i].display();
     }
   }
-
-  void tower() {
-  }
 }
 
 class shopitems {
@@ -44,10 +41,10 @@ class shopitems {
       t = new MG();
       break;
     case 1:
-      t = new MG();
+      t = new Hyper();
       break;
     case 2:
-      t = new MG();
+      t = new Sniper();
       break;
     case 3:
       t = new MG();
@@ -78,10 +75,10 @@ class shopitems {
           t = new MG();
           break;
         case 1:
-          t = new MG();
+          t = new Hyper();
           break;
         case 2:
-          t = new MG();
+          t = new Sniper();
           break;
         case 3:
           t = new MG();
