@@ -13,23 +13,20 @@ void setup() {
 
   //populate Grid
   populateGrid();
-
-/*  for (int i =0; i<2; i++) {
-    creeps.add(new Creep());
-    println(creeps.get(i).pos);
-//    println(gridRoute[0]);
-//    println(creeps.size());
-//   println(creeps.getloc);
-  }
-*/}
+}
 
 void draw() {
   background(160, 95, 20);
   //Draw Grid
-  for (Creep a : creeps) {
-    a.display();
-    a.direction();
+  
+  for (int i = 0; i < creeps.size(); i++){
+    creeps.get(i).display();
+    creeps.get(i).move();
   }
+  //for (Creep a : creeps) {
+  //  a.display();
+  //  a.direction();
+  //}
   for (Grid a : TowerGrid) {
     a.display();
     a.activate();

@@ -18,7 +18,7 @@ class Creep {
     ellipse(pos.x+25, pos.y+25, 20, 20);
   }
 
-  void direction() {
+  void move() {
     PVector dir = new PVector(0, 0);
     if (step < maxStep-1) {
       dir = new PVector(gridRoute[step+1].x-gridRoute[step].x, gridRoute[step+1].y-gridRoute[step].y);
@@ -30,6 +30,8 @@ class Creep {
         pos.y >= gridRoute[step+1].y * 50 - speed) {
         step++;
       }
+    } else {
+      creeps.remove(this);
     }
 
     pos.add(new PVector(dir.x * speed, dir.y*speed));
