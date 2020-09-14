@@ -6,8 +6,20 @@ class GameManager {
 
   //Creeps
   int wave;
+  float spawnAmnt = 5, spawnDist = 30;
 
   GameManager() {
+  }
+
+  void wave() {
+    if (creeps.size()==0) {
+      for (int i = 0; i < spawnAmnt; i++) {
+        PVector offset = new PVector(gridRoute[0].x - gridRoute[1].x, gridRoute[0].y - gridRoute[1].y);
+        offset.normalize();
+        offset.mult(spawnDist * (i+1));
+        creeps.add(new Creep(offset));
+      }
+    }
   }
 
   void display() {
