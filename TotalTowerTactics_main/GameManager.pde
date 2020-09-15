@@ -6,7 +6,7 @@ class GameManager {
 
   //Creeps
   int wave;
-  float spawnAmnt = 5, spawnDist = 30;
+  float spawnAmnt = 7, spawnDist = 30;
 
   GameManager() {
   }
@@ -14,37 +14,22 @@ class GameManager {
   void wave() {
     if (creeps.size()==0) {
       wave++;
-      //      int cToSpawn = (int)(sqrt((wave-1))+spawnAmnt);
-      int cToSpawn = (int)(wave*0.5+spawnAmnt);
+      int cToSpawn = (int)(wave*0.75+spawnAmnt);
       for (int i = 0; i < cToSpawn; i++) {
         PVector offset = new PVector(gridRoute[0].x - gridRoute[1].x, gridRoute[0].y - gridRoute[1].y);
         offset.normalize();
         offset.mult(spawnDist * (i+1));
-        creeps.add(new Creep(offset));
-      }
-      for (int j = 0; j < random(wave,wave+3); j++) {
-        PVector offset = new PVector(gridRoute[0].x - gridRoute[1].x, gridRoute[0].y - gridRoute[1].y);
-        offset.normalize();
-        offset.mult(spawnDist * (j+1));
-
-        if (wave>2) {
-          creeps.add(new Sprinter(offset));
+        int cType = (int) random (0, 2.99);
+        switch(cType){
+          case 0:
+            creeps.add(new Creep(offset));
+            break;
+          case 1:
+            creeps.add(new Sprinter(offset));
+          case 2:
+            creeps.add(new Tank(offset));
         }
-        println("Sprinter = "+j);
       }
-      
-      
-      for (int h = 0; h < random(wave,wave+5); h++) {
-        PVector offset = new PVector(gridRoute[0].x - gridRoute[1].x, gridRoute[0].y - gridRoute[1].y);
-        offset.normalize();
-        offset.mult(spawnDist * (h+1));
-        if (wave>3) {
-          creeps.add(new Tank(offset));
-        }
-       println("Tank = "+h);
-      }
-      
-      
     }
   }
 
@@ -59,6 +44,9 @@ class GameManager {
       ellipseMode(CENTER);
       fill(180, 180, 180, 40);
       ellipse(mouseX, mouseY, activeTower.r,activeTower.r);
+    }
+    if (mousePressed && mouseButton == RIGHT && activeTower != null){
+      activeTower = null;
     }
   }
 }

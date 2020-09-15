@@ -59,8 +59,6 @@ class Creep {
 
 
 class Sprinter extends Creep {
-
-
   Sprinter(PVector Offset) {
     cashOnKill = 10;
     hp = 5;
@@ -74,11 +72,8 @@ class Sprinter extends Creep {
   }
 }
 class Tank extends Creep {
-
-
   Tank(PVector Offset) {
     cashOnKill = 50;
-    cashOnKill = 300;
     hp = 20;
     speed = 0.5;
     step = 0;
