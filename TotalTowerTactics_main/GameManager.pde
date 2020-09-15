@@ -1,8 +1,8 @@
 class GameManager {
 
   //Player
-  int gold;
-  Tower activeTower = new MG();
+  int gold = 500;
+  Tower activeTower;
 
   //Creeps
   int wave;
@@ -33,5 +33,10 @@ class GameManager {
     textAlign(LEFT);
     text("Gold: " + gold, width - 190, 35);
     text("Wave: " + wave, width - 190, 70);
+    if (activeTower != null){
+      ellipseMode(CENTER);
+      fill(180, 180, 180, 40);
+      ellipse(mouseX, mouseY, activeTower.r,activeTower.r);
+    }
   }
 }

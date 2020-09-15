@@ -21,16 +21,12 @@ class Shop {
 }
 
 class shopitems {
-
   PVector pos;
-
   int sizex, sizey;
-
   int towerI;
   Tower t;
 
   shopitems(PVector postion, int sx, int sy, int tower) {
-
     pos = postion;
     sizex = sx;
     sizey = sy;
@@ -67,35 +63,45 @@ class shopitems {
       && mouseX < pos.x + sizex
       && mouseY > pos.y
       && mouseY < pos.y + sizey) {
-      fill(120, 120, 200);
-      if (mousePressed && mouseButton == LEFT) {
-        gm.activeTower = t;
-        switch(towerI) {
-        case 0:
-          t = new MG();
-          break;
-        case 1:
-          t = new Hyper();
-          break;
-        case 2:
-          t = new Sniper();
-          break;
-        case 3:
-          t = new MG();
-          break;
-        case 4:
-          t = new MG();
-          break;
-        case 5:
-          t = new MG();
-          break;
-        case 6:
-          t = new MG();
-          break;
+      fill(200, 120, 120);
+      if (gm.gold >= t.price) {
+        fill(120, 120, 200);
+        if (mousePressed && mouseButton == LEFT) {
+          gm.activeTower = t;
+          switch(towerI) {
+          case 0:
+            t = new MG();
+            break;
+          case 1:
+            t = new Hyper();
+            break;
+          case 2:
+            t = new Sniper();
+            break;
+          case 3:
+            t = new MG();
+            break;
+          case 4:
+            t = new MG();
+            break;
+          case 5:
+            t = new MG();
+            break;
+          case 6:
+            t = new MG();
+            break;
+          }
         }
       }
     }
+    rectMode(CORNER);
     rect(pos.x, pos.y, sizex, sizey);
+    t.pos = new PVector(pos.x, pos.y);
+    t.display();
+    textAlign(RIGHT);
+    textSize(20);
+    text(t.price, pos.x + sizex - 5, pos.y + 25);
+    text(t.name, pos.x + sizex - 5, pos.y + sizey - 5);
   }
   void mouse() {
   }
