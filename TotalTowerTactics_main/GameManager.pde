@@ -19,6 +19,7 @@ class GameManager {
         PVector offset = new PVector(gridRoute[0].x - gridRoute[1].x, gridRoute[0].y - gridRoute[1].y);
         offset.normalize();
         offset.mult(spawnDist * (i+1));
+
         int cType = (int) random (0, 2.99);
         switch(cType){
           case 0:
