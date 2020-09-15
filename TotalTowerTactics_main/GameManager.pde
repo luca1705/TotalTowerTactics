@@ -1,12 +1,12 @@
 class GameManager {
 
   //Player
-  int gold;
-  Tower activeTower = new MG();
+  int gold = 500;
+  Tower activeTower;
 
   //Creeps
   int wave;
-  float spawnAmnt = 5, spawnDist = 30;
+  float spawnAmnt = 7, spawnDist = 30;
 
   GameManager() {
   }
@@ -14,18 +14,26 @@ class GameManager {
   void wave() {
     if (creeps.size()==0) {
       wave++;
-//      int cToSpawn = (int)(sqrt((wave-1))+spawnAmnt);
-        int cToSpawn = (int)(wave*0.5+5);
+      int cToSpawn = (int)(wave*0.75+spawnAmnt);
       for (int i = 0; i < cToSpawn; i++) {
         PVector offset = new PVector(gridRoute[0].x - gridRoute[1].x, gridRoute[0].y - gridRoute[1].y);
         offset.normalize();
         offset.mult(spawnDist * (i+1));
-        creeps.add(new Creep(offset));
-        creeps.add(new Sprinter(offset));
-        creeps.add(new Tank(offset));
+
+        int cType = (int) random (0, 2.99);
+        switch(cType){
+          case 0:
+            creeps.add(new Creep(offset));
+            break;
+          case 1:
+            creeps.add(new Sprinter(offset));
+          case 2:
+            creeps.add(new Tank(offset));
+        }
       }
     }
   }
+
 
   void display() {
     fill(0);
@@ -33,5 +41,13 @@ class GameManager {
     textAlign(LEFT);
     text("Gold: " + gold, width - 190, 35);
     text("Wave: " + wave, width - 190, 70);
+    if (activeTower != null){
+      ellipseMode(CENTER);
+      fill(180, 180, 180, 40);
+      ellipse(mouseX, mouseY, activeTower.r,activeTower.r);
+    }
+    if (mousePressed && mouseButton == RIGHT && activeTower != null){
+      activeTower = null;
+    }
   }
 }

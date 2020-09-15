@@ -3,6 +3,14 @@ class Tower {
   PVector pos;
   Creep target;
 
+  //Shop
+  int price;
+  String name = "";
+
+  //Graphics
+  PVector targetDir;
+  float dir;
+
   Tower() {
   }
 
@@ -11,11 +19,17 @@ class Tower {
   }
 
   void display() {
-    rectMode(CENTER);
-    rect (pos.x + gSize/2, pos.y + gSize/2, 25, 25);
+    //    rectMode(CENTER);
+    //    rect (pos.x + gSize/2, pos.y + gSize/2, 25, 25);
   }
 
 
+  void calcDir() {
+    if (target != null) {
+      targetDir = new PVector (target.pos.x - pos.x, target.pos.y - pos.y);
+      dir = targetDir.heading();
+    }
+  }
   float cooldown = 0;
   void shoot() {
     cooldown -= 1/frameRate;
@@ -49,48 +63,83 @@ class Tower {
 //Machinegun Turret
 class MG extends Tower {
   MG() {
-    r = 200;
+    r = 250;
     rate = 4;
-    dmg = 1;
+    dmg = 1.5;
+    price = 75;
+    name = "MG Tower";
   }
 
   void display() {
     rectMode(CENTER);
-    fill(100, 200, 150);
+    fill(120);
     rect(pos.x + gSize/2, pos.y + gSize/2, 25, 25);
     noFill();
-    ellipse(pos.x + gSize/2, pos.y + gSize/2, r, r);
+    //    ellipse(pos.x + gSize/2, pos.y + gSize/2, r, r);
+
+    //Turret
+    pushMatrix();
+    translate(pos.x + gSize/2, pos.y + gSize / 2);
+    rotate(dir);
+    fill(40);
+    rect(0, 0, 9, 9);
+    rect (10, 0, 20, 4);
+    popMatrix();
   }
 }
 
 class Hyper extends Tower {
   Hyper() {
-    r = 150;
-    rate = 8;
-    dmg = 1;
+    r = 125;
+    rate = 7;
+    dmg = 0.6;
+    price = 150;
+    name = "Gatling Turret";
   }
 
   void display() {
     rectMode(CENTER);
-    fill(100, 200, 150);
+    fill(120);
     rect(pos.x + gSize/2, pos.y + gSize/2, 25, 25);
     noFill();
-    ellipse(pos.x + gSize/2, pos.y + gSize/2, r, r);
+    //    ellipse(pos.x + gSize/2, pos.y + gSize/2, r, r);
+
+    //Turret
+    pushMatrix();
+    translate(pos.x + gSize/2, pos.y + gSize / 2);
+    rotate(dir);
+    fill(40);
+    rect(0, 0, 6, 12);
+    rect(6, 3, 14, 3);
+    rect(6, -3, 14, 3);
+    popMatrix();
   }
 }
 
 class Sniper extends Tower {
   Sniper() {
-    r = 600;
-    rate = 0.5;
-    dmg = 1;
+    r = 950;
+    rate = 0.2;
+    dmg = 10;
+    price = 400;
+    name = "Sniper nest";
   }
 
   void display() {
     rectMode(CENTER);
-    fill(100, 200, 150);
+    fill(120);
     rect(pos.x + gSize/2, pos.y + gSize/2, 25, 25);
     noFill();
-    ellipse(pos.x + gSize/2, pos.y + gSize/2, r, r);
+    //    ellipse(pos.x + gSize/2, pos.y + gSize/2, r, r);
+
+    //Turret
+    pushMatrix();
+    translate(pos.x + gSize/2, pos.y + gSize / 2);
+    rotate(dir);
+    fill(40);
+    rect(0, 0, 12, 12);
+    rect (10, 0, 23, 5);
+    rect(23, 0, 7, 7);
+    popMatrix();
   }
 }

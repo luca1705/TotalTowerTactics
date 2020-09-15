@@ -8,6 +8,7 @@ class Base {
   
   void display(){
     fill(155);
+    rectMode(CORNER);
     rect(pos.x, pos.y, 50, 50);
     fill(0);
     textAlign(CENTER);

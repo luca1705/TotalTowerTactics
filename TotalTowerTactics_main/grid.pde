@@ -22,11 +22,13 @@ class Grid {
     if (gm.activeTower != null) {
       gridTower = gm.activeTower;
       gridTower.pos = pos;
+      gm.gold -= gm.activeTower.price;
       gm.activeTower = null;
     }
   }
 
   void destroyTower() {
+    gm.gold += gridTower.price;
     gridTower = null;
   }
 
@@ -47,22 +49,22 @@ class Grid {
     if (mouseX > pos.x && mouseX <pos.x+s && mouseY > pos.y && mouseY < pos.y+s) {
       if (gridTower == null) {
         fill(120, 120, 200);
-        if (mousePressed && mouseButton == LEFT) {
-          //Adapter til købsmenu
+        if (mousePressed && mouseButton == LEFT && gm.activeTower != null) {
           buildTower();
         }
       } else if (mousePressed && mouseButton == RIGHT) {
-          destroyTower();
-        } else {
-          fill (250, 25, 25, 120);
-        
+        destroyTower();
+      } else {
+        fill (250, 25, 25, 120);
       }
       rectMode(CORNER);
       rect(pos.x, pos.y, s, s);
     }
-    
-    if (gridTower != null)
+
+    if (gridTower != null) {
       gridTower.shoot();
+      gridTower.calcDir();
+    }
   }
 }
 

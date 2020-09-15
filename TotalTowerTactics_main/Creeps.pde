@@ -4,13 +4,17 @@ class Creep {
   float speed, hp = 1;
   int step, maxStep;
   PVector pos;
-  int farve_r,farve_g,farve_b;
+  int farve_r, farve_g, farve_b;
+  int cashOnKill;
+
   Creep() {
   }
+
   Creep(PVector Offset) {
     step = 0;
     hp = 10;
-    speed = 1;
+    speed = 1.75;
+    cashOnKill = 10;
     farve_r = 0;
     farve_g = 0;
     farve_b = 0;
@@ -20,7 +24,7 @@ class Creep {
 
   void display() {
     ellipseMode(CENTER);
-    fill(farve_r,farve_g,farve_b);
+    fill(farve_r, farve_g, farve_b);
     ellipse(pos.x+25, pos.y+25, 20, 20);
   }
 
@@ -47,6 +51,7 @@ class Creep {
 
   void health() {
     if (hp <= 0) {
+      gm.gold += cashOnKill;
       creeps.remove(this);
     }
   }
@@ -54,34 +59,30 @@ class Creep {
 
 
 class Sprinter extends Creep {
-
-
   Sprinter(PVector Offset) {
-
-    hp = 5;
+    cashOnKill = 15;
+    hp = 7;
     speed = 3.5;
-     step = 0;
-      farve_r = 255;
+    step = 0;
+    farve_r = 255;
     farve_g = 0;
     farve_b = 0;
     maxStep = gridRoute.length;
     pos = new PVector(gridRoute[0].x * 50 + Offset.x, gridRoute[0].y * 50 + Offset.y);
   }
-
-  }
-  class Tank extends Creep {
-
-
+}
+class Tank extends Creep {
   Tank(PVector Offset) {
 
-    hp = 20;
-    speed = 0.5;
-     step = 0;
-      farve_r = 201;
+    cashOnKill = 30;
+    hp = 23;
+    speed = 1.1;
+
+    step = 0;
+    farve_r = 201;
     farve_g = 201;
     farve_b = 201;
     maxStep = gridRoute.length;
     pos = new PVector(gridRoute[0].x * 50 + Offset.x, gridRoute[0].y * 50 + Offset.y);
   }
-
-  }
+}
