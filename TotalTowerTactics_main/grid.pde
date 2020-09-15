@@ -49,8 +49,7 @@ class Grid {
     if (mouseX > pos.x && mouseX <pos.x+s && mouseY > pos.y && mouseY < pos.y+s) {
       if (gridTower == null) {
         fill(120, 120, 200);
-        if (mousePressed && mouseButton == LEFT) {
-          //Adapter til købsmenu
+        if (mousePressed && mouseButton == LEFT && gm.activeTower != null) {
           buildTower();
         }
       } else if (mousePressed && mouseButton == RIGHT) {
