@@ -22,26 +22,24 @@ class GameManager {
         offset.mult(spawnDist * (i+1));
         creeps.add(new Creep(offset));
       }
-      for (int j = 0; j < random(wave,wave+3); j++) {
+      for (int j = 0; j < random(wave,wave+7); j++) {
         PVector offset = new PVector(gridRoute[0].x - gridRoute[1].x, gridRoute[0].y - gridRoute[1].y);
         offset.normalize();
         offset.mult(spawnDist * (j+1));
 
-        if (wave>2) {
+        if (wave>5) {
           creeps.add(new Sprinter(offset));
         }
-        println("Sprinter = "+j);
+       // println("Sprinter = "+j);
       }
-      
-      
-      for (int h = 0; h < random(wave,wave+5); h++) {
+      for (int h = 0; h < random(wave,wave+12); h++) {
         PVector offset = new PVector(gridRoute[0].x - gridRoute[1].x, gridRoute[0].y - gridRoute[1].y);
         offset.normalize();
         offset.mult(spawnDist * (h+1));
-        if (wave>3) {
+        if (wave>10) {
           creeps.add(new Tank(offset));
         }
-       println("Tank = "+h);
+     //  println("Tank = "+h);
       }
       
       

@@ -63,10 +63,10 @@ class Tower {
 //Machinegun Turret
 class MG extends Tower {
   MG() {
-    r = 200;
+    r = 250;
     rate = 4;
-    dmg = 1;
-    price = 100;
+    dmg = 1.5;
+    price = 75;
     name = "MG Tower";
   }
 
@@ -90,10 +90,10 @@ class MG extends Tower {
 
 class Hyper extends Tower {
   Hyper() {
-    r = 150;
-    rate = 8;
-    dmg = 1;
-    price = 200;
+    r = 125;
+    rate = 7;
+    dmg = 0.6;
+    price = 150;
     name = "Gatling Turret";
   }
 
@@ -118,10 +118,10 @@ class Hyper extends Tower {
 
 class Sniper extends Tower {
   Sniper() {
-    r = 600;
-    rate = 0.5;
-    dmg = 1;
-    price = 500;
+    r = 950;
+    rate = 0.2;
+    dmg = 10;
+    price = 400;
     name = "Sniper nest";
   }
 
