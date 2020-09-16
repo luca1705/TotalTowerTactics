@@ -1,7 +1,8 @@
 class GameManager {
 
   //Player
-  int gold = 500;
+  int startingGold = 500;
+  int gold;
   Tower activeTower;
 
   //Creeps
@@ -9,6 +10,7 @@ class GameManager {
   float spawnAmnt = 7, spawnDist = 30;
 
   GameManager() {
+    gold = startingGold;
   }
 
   void wave() {
@@ -19,6 +21,7 @@ class GameManager {
         PVector offset = new PVector(gridRoute[0].x - gridRoute[1].x, gridRoute[0].y - gridRoute[1].y);
         offset.normalize();
         offset.mult(spawnDist * (i+1));
+
 
         int cType = (int) random (0, 4.99);
         switch(cType) {
@@ -42,6 +45,14 @@ class GameManager {
         }
       }
     }
+  }
+
+  void restartGame() {
+    b = new Base(gridRoute[gridRoute.length-1]);
+    creeps = new ArrayList<Creep>();
+    gold = startingGold;
+    TowerGrid = new ArrayList<Grid>();
+    populateGrid();
   }
 
 
