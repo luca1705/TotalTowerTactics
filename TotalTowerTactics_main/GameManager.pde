@@ -22,17 +22,26 @@ class GameManager {
         offset.normalize();
         offset.mult(spawnDist * (i+1));
 
-        int cType = (int) random (0, 2.99);
+
+        int cType = (int) random (0, 4.99);
         switch(cType) {
         case 0:
           creeps.add(new Creep(offset));
           break;
         case 1:
-          creeps.add(new Sprinter(offset));
-          break;
+          creeps.add(new Sonic(offset));
         case 2:
           creeps.add(new Tank(offset));
-          break;
+        case 3:
+          creeps.add(new shortSprinter(offset));
+        case 4:
+          creeps.add(new Splitter(offset));
+        case 5: 
+          if (wave >2) {
+            creeps.add(new megaUltraDestroyer(offset));
+          } else {
+            creeps.add(new Creep(offset));
+          }
         }
       }
     }
@@ -45,6 +54,8 @@ class GameManager {
     TowerGrid = new ArrayList<Grid>();
     populateGrid();
   }
+
+
 
 
   void display() {
