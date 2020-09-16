@@ -6,6 +6,8 @@ class Creep {
   PVector pos;
   int farve_r, farve_g, farve_b;
   int cashOnKill;
+  boolean slowed = false;
+  float slowspeed;
 
   Creep() {
   }
@@ -45,7 +47,11 @@ class Creep {
       b.hp--;
     }
 
-    pos.add(new PVector(dir.x * speed, dir.y*speed));
+    if (!slowed ) { 
+      pos.add(new PVector(dir.x * speed, dir.y*speed));
+    } else {
+      pos.add(new PVector(dir.x * slowspeed, dir.y*slowspeed));
+    }
     maxStep = gridRoute.length;
   }
 
