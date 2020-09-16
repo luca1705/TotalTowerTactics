@@ -43,7 +43,7 @@ class shopitems {
       t = new Sniper();
       break;
     case 3:
-      t = new MG();
+      t = new Freezer();
       break;
     case 4:
       t = new MG();
@@ -79,7 +79,7 @@ class shopitems {
             t = new Sniper();
             break;
           case 3:
-            t = new MG();
+            t = new Freezer();
             break;
           case 4:
             t = new MG();
