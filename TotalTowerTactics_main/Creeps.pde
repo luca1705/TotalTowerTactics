@@ -42,7 +42,7 @@ class Creep {
       }
     } else {
       creeps.remove(this);
-      b.HP--;
+      b.hp--;
     }
 
     pos.add(new PVector(dir.x * speed, dir.y*speed));
@@ -62,7 +62,7 @@ class Sprinter extends Creep {
   Sprinter(PVector Offset) {
     cashOnKill = 15;
     hp = 7;
-    speed = 3.5;
+    speed = 7;
     step = 0;
     farve_r = 255;
     farve_g = 0;

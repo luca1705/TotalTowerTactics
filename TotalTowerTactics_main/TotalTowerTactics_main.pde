@@ -14,9 +14,7 @@ void setup() {
 
   w = width-200;
   h = height;
-
   
-
   //populate Grid
   populateGrid();
 
@@ -26,17 +24,17 @@ void setup() {
 
 void draw() {
   background(160, 95, 20);
+  
   //Draw Grid
-
   for (int i = 0; i < creeps.size(); i++) {
-
     creeps.get(i).display();
     creeps.get(i).health();
   }
+  
   for (int i = 0; i < creeps.size(); i++){
     creeps.get(i).move();
   }
-
+  
   for (Grid a : TowerGrid) {
     a.display();
     a.activate();
@@ -47,4 +45,5 @@ void draw() {
   gm.display();
   gm.wave();
   b.display();
+  b.baseHP();
 }
