@@ -30,7 +30,7 @@ class Tower {
       dir = targetDir.heading();
     }
   }
-  
+
   float cooldown = 0;
   void shoot() {
     cooldown -= 1/frameRate;
@@ -65,7 +65,7 @@ class Tower {
 class MG extends Tower {
   MG() {
     r = 250;
-    rate = 4;
+    rate = 3;
     dmg = 1.5;
     price = 75;
     name = "MG Tower";
@@ -75,8 +75,6 @@ class MG extends Tower {
     rectMode(CENTER);
     fill(120);
     rect(pos.x + gSize/2, pos.y + gSize/2, 25, 25);
-    noFill();
-    //    ellipse(pos.x + gSize/2, pos.y + gSize/2, r, r);
 
     //Turret
     pushMatrix();
@@ -89,10 +87,10 @@ class MG extends Tower {
   }
 }
 
-class Hyper extends Tower {
-  Hyper() {
-    r = 125;
-    rate = 7;
+class Gatling extends Tower {
+  Gatling() {
+    r = 150;
+    rate = 10;
     dmg = 0.6;
     price = 150;
     name = "Gatling Turret";
@@ -102,8 +100,6 @@ class Hyper extends Tower {
     rectMode(CENTER);
     fill(120);
     rect(pos.x + gSize/2, pos.y + gSize/2, 25, 25);
-    noFill();
-    //    ellipse(pos.x + gSize/2, pos.y + gSize/2, r, r);
 
     //Turret
     pushMatrix();
@@ -120,8 +116,8 @@ class Hyper extends Tower {
 class Sniper extends Tower {
   Sniper() {
     r = 950;
-    rate = 0.2;
-    dmg = 10;
+    rate = 0.4;
+    dmg = 8;
     price = 400;
     name = "Sniper nest";
   }
@@ -130,8 +126,6 @@ class Sniper extends Tower {
     rectMode(CENTER);
     fill(120);
     rect(pos.x + gSize/2, pos.y + gSize/2, 25, 25);
-    noFill();
-    //    ellipse(pos.x + gSize/2, pos.y + gSize/2, r, r);
 
     //Turret
     pushMatrix();
@@ -178,7 +172,7 @@ class Freezer extends Tower {
       }
 
       if (target != null && target.hp <= 0)
-      target = null;
+        target = null;
     }
   }
 
@@ -187,8 +181,6 @@ class Freezer extends Tower {
     rectMode(CENTER);
     fill(120);
     rect(pos.x + gSize/2, pos.y + gSize/2, 25, 25);
-    noFill();
-    //    ellipse(pos.x + gSize/2, pos.y + gSize/2, r, r);
 
     //Turret
     pushMatrix();
@@ -198,5 +190,34 @@ class Freezer extends Tower {
     rect(0, 0, 15, 15);
     rect (10, 0, 20, 10);
     popMatrix();
+  }
+}
+
+class Bank extends Tower {
+  
+  int waveC;
+  int goldToAdd = 25;
+  
+  Bank() {
+    waveC = gm.wave;
+    price = 500;
+    name = "Bank";
+  }
+
+  void display() {
+    fill(120);
+    rectMode(CENTER);
+    rect(pos.x + gSize/2, pos.y + gSize/2, 25, 25);
+    textAlign(CENTER, CENTER);
+    textSize(22);
+    fill(255, 255, 20);
+    text("$", pos.x + gSize/2, pos.y + gSize/2 - 3);
+  }
+  
+  void shoot(){
+    if (gm.wave > waveC){
+      gm.gold += goldToAdd;
+      waveC = gm.wave;
+    }
   }
 }

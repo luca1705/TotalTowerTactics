@@ -37,7 +37,7 @@ class shopitems {
       t = new MG();
       break;
     case 1:
-      t = new Hyper();
+      t = new Gatling();
       break;
     case 2:
       t = new Sniper();
@@ -52,7 +52,7 @@ class shopitems {
       t = new MG();
       break;
     case 6:
-      t = new MG();
+      t = new Bank();
       break;
     }
   }
@@ -73,7 +73,7 @@ class shopitems {
             t = new MG();
             break;
           case 1:
-            t = new Hyper();
+            t = new Gatling();
             break;
           case 2:
             t = new Sniper();
@@ -88,7 +88,7 @@ class shopitems {
             t = new MG();
             break;
           case 6:
-            t = new MG();
+            t = new Bank();
             break;
           }
         }
@@ -100,6 +100,7 @@ class shopitems {
     t.display();
     textAlign(RIGHT);
     textSize(20);
+    fill(20);
     text(t.price, pos.x + sizex - 5, pos.y + 25);
     text(t.name, pos.x + sizex - 5, pos.y + sizey - 5);
   }

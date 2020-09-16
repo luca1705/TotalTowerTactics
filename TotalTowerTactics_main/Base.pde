@@ -13,8 +13,8 @@ class Base {
       textAlign(CENTER, CENTER);
       fill(255);
       textSize(56);
-      text("GAME OVER", width/2, height / 4);
-
+      text("GAME OVER!", width/2, height / 4 - 25);
+      text("You made it to round " + gm.wave + ", Pathetic!", width/2, height/4 + 50);
 
       if (mouseX < width/2 + 125 
         && mouseX > width/2 - 125
