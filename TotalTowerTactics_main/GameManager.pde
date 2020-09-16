@@ -1,7 +1,8 @@
 class GameManager {
 
   //Player
-  int gold = 500;
+  int startingGold = 500;
+  int gold;
   Tower activeTower;
 
   //Creeps
@@ -9,6 +10,7 @@ class GameManager {
   float spawnAmnt = 7, spawnDist = 30;
 
   GameManager() {
+    gold = startingGold;
   }
 
   void wave() {
@@ -20,19 +22,40 @@ class GameManager {
         offset.normalize();
         offset.mult(spawnDist * (i+1));
 
-        int cType = (int) random (0, 2.99);
-        switch(cType){
-          case 0:
+
+        int cType = (int) random (0, 4.99);
+        switch(cType) {
+        case 0:
+          creeps.add(new Creep(offset));
+          break;
+        case 1:
+          creeps.add(new Sonic(offset));
+        case 2:
+          creeps.add(new Tank(offset));
+        case 3:
+          creeps.add(new shortSprinter(offset));
+        case 4:
+          creeps.add(new Splitter(offset));
+        case 5: 
+          if (wave >2) {
+            creeps.add(new megaUltraDestroyer(offset));
+          } else {
             creeps.add(new Creep(offset));
-            break;
-          case 1:
-            creeps.add(new Sprinter(offset));
-          case 2:
-            creeps.add(new Tank(offset));
+          }
         }
       }
     }
   }
+
+  void restartGame() {
+    b = new Base(gridRoute[gridRoute.length-1]);
+    creeps = new ArrayList<Creep>();
+    gold = startingGold;
+    TowerGrid = new ArrayList<Grid>();
+    populateGrid();
+  }
+
+
 
 
   void display() {
@@ -41,12 +64,12 @@ class GameManager {
     textAlign(LEFT);
     text("Gold: " + gold, width - 190, 35);
     text("Wave: " + wave, width - 190, 70);
-    if (activeTower != null){
+    if (activeTower != null) {
       ellipseMode(CENTER);
       fill(180, 180, 180, 40);
-      ellipse(mouseX, mouseY, activeTower.r,activeTower.r);
+      ellipse(mouseX, mouseY, activeTower.r, activeTower.r);
     }
-    if (mousePressed && mouseButton == RIGHT && activeTower != null){
+    if (mousePressed && mouseButton == RIGHT && activeTower != null) {
       activeTower = null;
     }
   }

@@ -30,6 +30,7 @@ class Tower {
       dir = targetDir.heading();
     }
   }
+  
   float cooldown = 0;
   void shoot() {
     cooldown -= 1/frameRate;
