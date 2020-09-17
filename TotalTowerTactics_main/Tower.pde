@@ -194,10 +194,10 @@ class Freezer extends Tower {
 }
 
 class Bank extends Tower {
-  
+
   int waveC;
   int goldToAdd = 25;
-  
+
   Bank() {
     waveC = gm.wave;
     price = 500;
@@ -214,11 +214,80 @@ class Bank extends Tower {
     fill(255, 255, 20);
     text("$", pos.x + gSize/2, pos.y + gSize/2 - 3);
   }
-  
-  void shoot(){
-    if (gm.wave > waveC){
+
+  void shoot() {
+    if (gm.wave > waveC) {
       gm.gold += goldToAdd;
       waveC = gm.wave;
     }
+  }
+}
+class Spike extends Tower {
+  Spike() {
+    r = 250;
+    rate = 7;
+    dmg = 0.5;
+    price = 75;
+    name = "Spike Tower";
+  }
+
+  void display() {
+    rectMode(CENTER);
+    fill(120);
+    ellipse(pos.x + gSize/2, pos.y + gSize/2, 35, 35);
+
+    //Turret
+    pushMatrix();
+    translate(pos.x + gSize/2, pos.y + gSize / 2);
+    rotate(dir);
+    fill(40);
+    ellipse(0, 0, 15, 15);
+    for (float i = 0; i<PI*2; i= i+PI/12) {
+      rotate(i);
+      rect (10, 0, 20, 4);
+    }
+
+    popMatrix();
+  }
+  void shoot() {
+    cooldown -= 1/frameRate;
+    if (cooldown <= 0) {
+      for (int i =0; i<creeps.size(); i++) {
+        if ( dist(creeps.get(i).pos.x+25, creeps.get(i).pos.y+25, pos.x + gSize/2, pos.y + gSize/2) <= r/2) {
+          creeps.get(i).hp-=dmg;
+          cooldown = 1/rate;
+          strokeWeight(9);
+          stroke(0, 0, 250);
+          line(creeps.get(i).pos.x + 25, creeps.get(i).pos.y + 25, pos.x+25, pos.y+25);
+          stroke(0, 0, 0, 50);
+          strokeWeight(1);
+        }
+      }
+    }
+  }
+}
+class SuperLuperDuber extends Tower {
+  SuperLuperDuber() {
+    r = 400;
+    rate = 10;
+    dmg = 5;
+    price = 10000;
+    name = "SLD Tower";
+  }
+
+  void display() {
+
+
+    //Turret
+    pushMatrix();
+    translate(pos.x + gSize/2, pos.y + gSize / 2);
+    rotate(dir);
+    rectMode(CENTER);
+    fill(120);
+    triangle(-gSize/2 , gSize/3,-gSize/2 , -gSize/3 , gSize/2,  0);
+    fill(40);
+    rect(-gSize/4, 0, 9, 9);
+    rect (gSize/20, 0, 20, 8);
+    popMatrix();
   }
 }

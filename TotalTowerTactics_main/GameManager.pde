@@ -1,7 +1,7 @@
 class GameManager {
 
   //Player
-  int startingGold = 225;
+  int startingGold = 22500;
   int gold;
   Tower activeTower;
 
