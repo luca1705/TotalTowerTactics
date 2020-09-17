@@ -45,8 +45,7 @@ class GameManager {
         PVector offset = new PVector(gridRoute[0].x - gridRoute[1].x, gridRoute[0].y - gridRoute[1].y);
         offset.normalize();
         offset.mult(spawnDist * (i+1));
-
-
+        
         int cType = (int) random (0, 5.99);
         switch(cType) {
         case 0:
@@ -71,17 +70,24 @@ class GameManager {
             creeps.add(new Creep(offset));
           break;
         case 4:
-          creeps.add(new Creep(offset));
+          if (wave > 10)
+            creeps.add(new Splitter(offset));
+          else 
+            creeps.add(new Creep(offset));
           break;
         case 5: 
-          if (wave > 10) {
+          if (wave > 15)
             creeps.add(new megaUltraDestroyer(offset));
-            break;
-          } else {
-            creeps.add(new Creep(offset));
-            break;
-          }
+          else 
+          creeps.add(new Creep(offset));
+          break;
         }
+      }
+      if (wave % 10 == 0){
+        PVector offset = new PVector(gridRoute[0].x - gridRoute[1].x, gridRoute[0].y - gridRoute[1].y);
+        offset.normalize();
+        offset.mult(spawnDist);
+        creeps.add(new Mutant(offset));
       }
     }
   }
@@ -93,9 +99,6 @@ class GameManager {
     TowerGrid = new ArrayList<Grid>();
     populateGrid();
   }
-
-
-
 
   void display() {
     fill(0);

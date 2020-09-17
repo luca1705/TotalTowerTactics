@@ -152,7 +152,7 @@ class Freezer extends Tower {
     cooldown -= 1/frameRate;
     if (target == null) {
       for (int i =0; i<creeps.size(); i++) {
-        if (dist(creeps.get(creeps.size()-1-i).pos.x+25, creeps.get(creeps.size()-1-i).pos.y+25, pos.x + gSize/2, pos.y + gSize/2) <= r/2 && !creeps.get(creeps.size()-1-i) .slowed) {
+        if (dist(creeps.get(creeps.size()-1-i).pos.x+25, creeps.get(creeps.size()-1-i).pos.y+25, pos.x + gSize/2, pos.y + gSize/2) <= r/2 && !creeps.get(creeps.size()-1-i).slowed) {
           target = creeps.get(creeps.size()-1-i);
         }
       }
@@ -202,6 +202,7 @@ class Bank extends Tower {
     waveC = gm.wave;
     price = 500;
     name = "Bank";
+    r = 50;
   }
 
   void display() {
