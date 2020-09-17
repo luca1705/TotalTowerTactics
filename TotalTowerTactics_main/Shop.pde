@@ -46,14 +46,15 @@ class shopitems {
       t = new Freezer();
       break;
     case 4:
-      t = new MG();
+      t = new Spike();
       break;
     case 5:
-      t = new MG();
+      t = new SuperLuperDuber();
       break;
     case 6:
       t = new Bank();
       break;
+      
     }
   }
 
@@ -82,10 +83,10 @@ class shopitems {
             t = new Freezer();
             break;
           case 4:
-            t = new MG();
+            t = new Spike();
             break;
           case 5:
-            t = new MG();
+            t = new SuperLuperDuber();
             break;
           case 6:
             t = new Bank();
