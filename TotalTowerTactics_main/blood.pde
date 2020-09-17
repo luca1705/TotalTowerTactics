@@ -7,7 +7,7 @@ class Blood {
 
   int r, g, b;
   int s;
-  
+
   Blood(PVector position) {
     pos = new PVector(position.x + gSize/2, position.y+gSize/2);
     lTime = random(10, 15);
@@ -16,8 +16,20 @@ class Blood {
     r=(int)random(180, 220);
     g=(int)random(10, 30);
     b=(int)random(40, 60);
-    
+
     s = (int)random(1, 10);
+  }
+
+  Blood(PVector position, int red, int green, int blue) {
+    pos = new PVector(position.x + gSize/2, position.y+gSize/2);
+    lTime = random(10, 15);
+    vel = new PVector(random(-1.2, 1.2), random(-1.2, 1.2));
+
+    r = (int)(random(0.8, 1.2) * red);
+    g= (int)(random(0.8, 1.2) * green);
+    b= (int)(random(0.8, 1.2) * blue);
+
+    s = (int)random(3, 10);
   }
 
 
@@ -26,17 +38,17 @@ class Blood {
 
     pos.add(vel);
     vel.mult(0.95);
-    
+
     lTime -= 1/frameRate;
     if (lTime < 0)
       blood.remove(this);
-    }
+  }
 
-    void display() {
-      stroke(r, g, b);
-      strokeWeight(s);
-      point(pos.x, pos.y);
-      stroke(0, 0, 0, 50);
-      strokeWeight(1);
-    }
+  void display() {
+    stroke(r, g, b);
+    strokeWeight(s);
+    point(pos.x, pos.y);
+    stroke(0, 0, 0, 50);
+    strokeWeight(1);
+  }
 }
