@@ -116,7 +116,7 @@ class Gatling extends Tower {
 class Sniper extends Tower {
   Sniper() {
     r = 950;
-    rate = 0.4;
+    rate = 0.6;
     dmg = 8;
     price = 400;
     name = "Sniper nest";
@@ -196,7 +196,7 @@ class Freezer extends Tower {
 class Bank extends Tower {
 
   int waveC;
-  int goldToAdd = 25;
+  int goldToAdd = 50;
 
   Bank() {
     waveC = gm.wave;
@@ -224,10 +224,10 @@ class Bank extends Tower {
 }
 class Spike extends Tower {
   Spike() {
-    r = 250;
-    rate = 7;
-    dmg = 0.5;
-    price = 75;
+    r = 150;
+    rate = 2;
+    dmg = 0.35;
+    price = 150;
     name = "Spike Tower";
   }
 
