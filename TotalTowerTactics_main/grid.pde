@@ -28,7 +28,7 @@ class Grid {
   }
 
   void destroyTower() {
-    gm.gold += gridTower.price;
+    gm.gold += gridTower.price/3*2;
     gridTower = null;
   }
 
