@@ -1,3 +1,8 @@
+import processing.sound.*;
+SoundFile bg;
+String audioName = "Music.wav";
+String path;
+
 int w, h;
 ArrayList<PVector> level;
 
@@ -12,14 +17,19 @@ void setup() {
   stroke(0, 0, 0, 50);
   size(1000, 800);
   store = new Shop();
-
+  
   w = width-200;
   h = height;
-
+  
   //populate Grid
   populateGrid();
-
+  
   b = new Base(gridRoute[gridRoute.length-1]);
+  
+  //Import audio
+  path = sketchPath(audioName);
+  bg = new SoundFile(this, path);
+  bg.play();
 }
 
 void draw() {
