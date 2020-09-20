@@ -1,4 +1,5 @@
 import processing.sound.*;
+
 SoundFile bg;
 String audioName = "Music.wav";
 String path;
@@ -11,7 +12,7 @@ GameManager gm = new GameManager();
 boolean menu = true;
 
 Base b;
-Shop store; 
+Shop store;
 
 void setup() {
   stroke(0, 0, 0, 50);
@@ -29,6 +30,10 @@ void setup() {
   //Import audio
   path = sketchPath(audioName);
   bg = new SoundFile(this, path);
+  
+  Sound s = new Sound(this);
+  s.volume(0.1);
+  
   bg.play();
 }
 
