@@ -1,5 +1,8 @@
 class Tower {
   float r, rate, dmg;
+  //Upgrade prices
+  int upgradeR = 100, upgradeRate = 100, upgradeDmg = 100;
+
   PVector pos;
   Creep target;
 
@@ -11,16 +14,29 @@ class Tower {
   PVector targetDir;
   float dir;
 
+
   Tower() {
   }
+  void display() {
+  }
+
 
   Tower(PVector position) {
     pos = position;
   }
 
-  void display() {
-    //    rectMode(CENTER);
-    //    rect (pos.x + gSize/2, pos.y + gSize/2, 25, 25);
+
+  void upgradeRange() {
+    upgradeR += 100;
+    r++;
+  }
+  void upgradeFireRate() {
+    upgradeRate += 100;
+    rate++;
+  }
+  void upgradeDamage() {
+    upgradeDmg += 100;
+    dmg++;
   }
 
 
@@ -85,6 +101,23 @@ class MG extends Tower {
     rect (10, 0, 20, 4);
     popMatrix();
   }
+
+  void upgradeRange() {
+    gm.gold-=upgradeR;
+    upgradeR += 100;
+    r+= 50;
+  }
+  
+  void upgradeFireRate() {
+    gm.gold-=upgradeRate;
+    upgradeRate += 100;
+    rate++;
+  }
+  void upgradeDamage() {
+    gm.gold-=upgradeDmg;
+    upgradeDmg += 100;
+    dmg+=0.5;
+  }
 }
 
 class Gatling extends Tower {
@@ -111,11 +144,24 @@ class Gatling extends Tower {
     rect(6, -3, 14, 3);
     popMatrix();
   }
+
+  void upgradeRange() {
+    upgradeR += 100;
+    r+=25;
+  }
+  void upgradeFireRate() {
+    upgradeRate += 100;
+    rate++;
+  }
+  void upgradeDamage() {
+    upgradeDmg += 100;
+    dmg+=0.2;
+  }
 }
 
 class Sniper extends Tower {
   Sniper() {
-    r = 950;
+    r = 700;
     rate = 0.6;
     dmg = 8;
     price = 400;
@@ -136,6 +182,19 @@ class Sniper extends Tower {
     rect (10, 0, 23, 5);
     rect(23, 0, 7, 7);
     popMatrix();
+  }
+
+  void upgradeRange() {
+    upgradeR += 100;
+    r+=75;
+  }
+  void upgradeFireRate() {
+    upgradeRate += 100;
+    rate+= 0.2;
+  }
+  void upgradeDamage() {
+    upgradeDmg += 100;
+    dmg++;
   }
 }
 
@@ -159,6 +218,7 @@ class Freezer extends Tower {
     } else {
       if (cooldown <= 0) {
         target.slowed = true;
+        target.hp-= dmg;
         cooldown = 1/rate;
         strokeWeight(9);
         stroke(0, 0, 250);
@@ -174,6 +234,18 @@ class Freezer extends Tower {
       if (target != null && target.hp <= 0)
         target = null;
     }
+  }
+  void upgradeRange() {
+    upgradeR += 100;
+    r+=25;
+  }
+  void upgradeFireRate() {
+    upgradeRate += 100;
+    rate+= 0.2;
+  }
+  void upgradeDamage() {
+    upgradeDmg += 100;
+    dmg+=0.2;
   }
 
 
@@ -214,6 +286,16 @@ class Bank extends Tower {
     fill(255, 255, 20);
     text("$", pos.x + gSize/2, pos.y + gSize/2 - 3);
   }
+  void upgradeRange() {
+
+  }
+  void upgradeFireRate() {
+
+  }
+  void upgradeDamage() {
+    upgradeDmg += 100;
+    goldToAdd += 10;
+  }
 
   void shoot() {
     if (gm.wave > waveC) {
@@ -246,9 +328,21 @@ class Spike extends Tower {
       rotate(i);
       rect (10, 0, 20, 4);
     }
-
     popMatrix();
   }
+  void upgradeRange() {
+    upgradeR += 100;
+    r+= 25;
+  }
+  void upgradeFireRate() {
+    upgradeRate += 100;
+    rate+= 0.25;
+  }
+  void upgradeDamage() {
+    upgradeDmg += 100;
+    dmg += 0.1;
+  }
+
   void shoot() {
     cooldown -= 1/frameRate;
     if (cooldown <= 0) {
@@ -274,17 +368,27 @@ class SuperLuperDuber extends Tower {
     price = 10000;
     name = "SLD Tower";
   }
+  void upgradeRange() {
+    upgradeR += 100;
+    r+=50;
+  }
+  void upgradeFireRate() {
+    upgradeRate += 100;
+    rate++;
+  }
+  void upgradeDamage() {
+    upgradeDmg += 100;
+    dmg+=0.5;
+  }
 
   void display() {
-
-
     //Turret
     pushMatrix();
     translate(pos.x + gSize/2, pos.y + gSize / 2);
     rotate(dir);
     rectMode(CENTER);
     fill(120);
-    triangle(-gSize/2 , gSize/3,-gSize/2 , -gSize/3 , gSize/2,  0);
+    triangle(-gSize/2, gSize/3, -gSize/2, -gSize/3, gSize/2, 0);
     fill(40);
     rect(-gSize/4, 0, 9, 9);
     rect (gSize/20, 0, 20, 8);

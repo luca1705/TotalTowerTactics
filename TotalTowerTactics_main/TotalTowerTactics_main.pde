@@ -1,7 +1,7 @@
 import processing.sound.*;
 
 SoundFile bg;
-String audioName = "Music.wav";
+String audioName = "Music.mp3";
 String path;
 
 int w, h;
@@ -30,7 +30,7 @@ void setup() {
   //Import audio
   path = sketchPath(audioName);
   bg = new SoundFile(this, path);
-  
+  bg.loop();
   Sound s = new Sound(this);
   s.volume(0.1);
   
@@ -69,4 +69,8 @@ void draw() {
     }
     b.baseHP();
   }
+}
+
+void mouseReleased(){
+  store.mousedown = false;
 }

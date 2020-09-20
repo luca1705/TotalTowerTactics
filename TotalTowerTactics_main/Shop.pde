@@ -1,5 +1,6 @@
 class Shop {
 
+  boolean mousedown = false;
   shopitems[] si = new shopitems[7];
   Shop() {
     for (int i = 0; i <si.length; i++) {
@@ -21,6 +22,8 @@ class Shop {
 }
 
 class shopitems {
+
+
   PVector pos;
   int sizex, sizey;
   int towerI;
@@ -54,7 +57,6 @@ class shopitems {
     case 6:
       t = new Bank();
       break;
-      
     }
   }
 
@@ -104,7 +106,66 @@ class shopitems {
     fill(20);
     text(t.price, pos.x + sizex - 5, pos.y + 25);
     text(t.name, pos.x + sizex - 5, pos.y + sizey - 5);
-  }
-  void mouse() {
+
+
+    if (gm.upgradeTower != null) {
+      rectMode(CENTER);
+      fill(180, 180, 180, 10);
+      ellipse(gm.upgradeTower.pos.x + gSize/2, gm.upgradeTower.pos.y + gSize/2, gm.upgradeTower.r, gm.upgradeTower.r);
+      fill(170);
+      rect(w/2, height-75, 500, 100);
+
+      fill(225);
+      //Upgrades
+      rect(w/2-175, height-75, 100, 75);
+      rect(w/2+175, height-75, 100, 75);
+      rect(w/2, height-75, 100, 75);
+
+      if (mouseY > height-107 && mouseY < height-33) {
+
+        //Range
+        if (mouseX > w/2-225 && mouseX < w/2 - 125) {
+          fill(120, 120, 200);
+          if (gm.gold < gm.upgradeTower.upgradeR) {
+            fill(200, 120, 120);
+          } else if (!store.mousedown && mousePressed) {
+            gm.upgradeTower.upgradeRange();
+            store.mousedown = true;
+          }
+          rect(w/2-175, height-75, 100, 75);
+        }
+        //Fire Rate
+        if (mouseX > w/2+125 && mouseX < w/2 + 225) {
+          fill(120, 120, 200);
+          if (gm.gold < gm.upgradeTower.upgradeRate) {
+            fill(200, 120, 120);
+          } else if (!store.mousedown && mousePressed) {
+            gm.upgradeTower.upgradeFireRate();
+            store.mousedown = true;
+          }
+
+          rect(w/2+175, height-75, 100, 75);
+        }
+        //Damage
+        if (mouseX > w/2-50 && mouseX < w/2 + 50) {
+          fill(120, 120, 200);
+          if (gm.gold < gm.upgradeTower.upgradeDmg) {
+            fill(200, 120, 120);
+          } else if (!store.mousedown && mousePressed) {
+            gm.upgradeTower.upgradeDamage();
+            store.mousedown = true;
+          }
+          rect(w/2, height-75, 100, 75);
+        }
+      }
+      fill(20);
+      textAlign(CENTER, CENTER);
+      text("Range", w/2-175, height-95);
+      text("Damage", w/2, height-95);
+      text("Fire Rate", w/2+175, height-95);
+      text(gm.upgradeTower.upgradeR, w/2-175, height-65);
+      text(gm.upgradeTower.upgradeDmg, w/2, height-65);
+      text(gm.upgradeTower.upgradeRate, w/2+175, height-65);
+    }
   }
 }
