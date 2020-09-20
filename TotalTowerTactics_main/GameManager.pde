@@ -4,6 +4,7 @@ class GameManager {
   int startingGold = 225;
   int gold;
   Tower activeTower;
+  Tower upgradeTower;
 
   //Creeps
   int wave;
@@ -12,7 +13,6 @@ class GameManager {
   GameManager() {
     gold = startingGold;
   }
-
 
   void mainMenu() {
     background(20);
@@ -45,7 +45,7 @@ class GameManager {
         PVector offset = new PVector(gridRoute[0].x - gridRoute[1].x, gridRoute[0].y - gridRoute[1].y);
         offset.normalize();
         offset.mult(spawnDist * (i+1));
-        
+
         int cType = (int) random (0, 5.99);
         switch(cType) {
         case 0:
@@ -73,7 +73,7 @@ class GameManager {
           if (wave > 10)
             creeps.add(new Splitter(offset));
           else 
-            creeps.add(new Creep(offset));
+          creeps.add(new Creep(offset));
           break;
         case 5: 
           if (wave > 15)
@@ -83,7 +83,7 @@ class GameManager {
           break;
         }
       }
-      if (wave % 10 == 0){
+      if (wave % 10 == 0) {
         PVector offset = new PVector(gridRoute[0].x - gridRoute[1].x, gridRoute[0].y - gridRoute[1].y);
         offset.normalize();
         offset.mult(spawnDist);
@@ -113,6 +113,9 @@ class GameManager {
     }
     if (mousePressed && mouseButton == RIGHT && activeTower != null) {
       activeTower = null;
+    }
+    if (mousePressed && mouseButton == RIGHT && upgradeTower != null) {
+      upgradeTower = null;
     }
   }
 }

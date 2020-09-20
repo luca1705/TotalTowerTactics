@@ -54,7 +54,10 @@ class Grid {
         }
       } else if (mousePressed && mouseButton == RIGHT) {
         destroyTower();
-      } else {
+      } else if (mousePressed && mouseButton == LEFT) {
+         gm.upgradeTower = gridTower;
+         gm.activeTower = null;
+        } else {
         fill (250, 25, 25, 120);
       }
       rectMode(CORNER);
